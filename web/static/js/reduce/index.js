@@ -4,7 +4,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { reduce } from './reducers'
 import { incrementCounter, decrementCounter } from "./actions"
-import { Counter } from "./components/counter"
+import Counter from "./components/counter"
 import ReactDOM from "react-dom"
 import React from "react"
 
@@ -13,7 +13,7 @@ import React from "react"
 let store = createStore(reduce)
 
 let unsubscribe = store.subscribe(() =>
-  console.log(store.getState())
+  console.log(store.getState().toObject())
 )
 
 ReactDOM.render(
@@ -22,7 +22,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("reduce")
 )
-
-// store.dispatch(incrementCounter())
-// store.dispatch(incrementCounter())
-// store.dispatch(decrementCounter())

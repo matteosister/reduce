@@ -1,14 +1,15 @@
 import {INCREMENT, DECREMENT} from "./actions"
+let Immutable = require("immutable")
 
-const initialState = { value: 0 }
+const initialState = Immutable.Map({value: 0})
 
 export function reduce(state = initialState, action) {
   switch(action.type) {
     case INCREMENT:
-      return Object.assign({}, state, {value: state.value + 1})
+      return state.update('value', (v) => { return v + 1 })
       break
     case DECREMENT:
-      return Object.assign({}, state, {value: state.value - 1})
+      return state.update('value', (v) => { return v - 1 })
       break
     default:
       return state
