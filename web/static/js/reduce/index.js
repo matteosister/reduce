@@ -1,3 +1,5 @@
+'use strict'
+
 import { createStore } from 'redux'
 import { reduce } from './reducers'
 import { incrementCounter, decrementCounter } from "./actions"
