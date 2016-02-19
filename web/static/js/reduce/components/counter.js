@@ -1,15 +1,22 @@
+'use strict'
+
 import React from "react"
-import Button from "./button"
+import Container from 'muicss/lib/react/container';
+import Row from 'muicss/lib/react/row';
+import Col from 'muicss/lib/react/col';
+import Button from 'muicss/lib/react/button';
 import { connect } from 'react-redux'
 import { incrementCounter, decrementCounter } from "./../actions"
 
 const CounterView = ({value, onIncrementClick, onDecrementClick}) => (
-  <div>
+  <Container>
     <h1>Counter</h1>
-    <Button label="-" onClick={onDecrementClick} />
-    <span>{value}</span>
-    <Button label="+" onClick={onIncrementClick} />
-  </div>
+    <Row>
+      <Col md="1"><Button color="primary" onClick={onDecrementClick}>-</Button></Col>
+      <Col md="1" className="mui--text-display2">{value}</Col>
+      <Col md="1"><Button color="primary" onClick={onIncrementClick}>+</Button></Col>
+    </Row>
+  </Container>
 )
 
 const mapStateToProps = (state) => {

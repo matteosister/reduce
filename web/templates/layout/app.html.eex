@@ -8,7 +8,8 @@
     <meta name="author" content="">
 
     <title>Reduce!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <!-- <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>"> -->
+    <link href="//cdn.muicss.com/mui-0.4.6/css/mui.min.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
