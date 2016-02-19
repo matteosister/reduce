@@ -1,3 +1,11 @@
-FROM matteosister/phoenix
+FROM msaraiva/elixir-dev:1.2.2
 
-WORKDIR /app
+RUN apk update && apk add nodejs inotify-tools
+
+WORKDIR /code
+RUN mix local.hex --force
+RUN mix local.rebar --force
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+CMD ["/entrypoint.sh"]

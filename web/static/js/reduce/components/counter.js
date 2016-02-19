@@ -1,13 +1,33 @@
 import React from "react"
-import ReactDOM from "react-dom"
+import { Button } from "./button"
+import { connect } from 'react-redux'
 
-class HelloWorld extends React.Component {
+class CounterComponent extends React.Component {
+  decrement() {
+    console.log('decrement')
+  }
+  increment() {
+    console.log('increment')
+  }
+
   render() {
-    return (<h1>Hello World!</h1>)
+    return (
+      <div>
+        <h1>Counter</h1>
+        <Button label="-" onClick={this.decrement} />
+        {this.props.value}
+        <Button label="+" onClick={this.increment} />
+      </div>
+    )
   }
 }
 
-ReactDOM.render(
-  <HelloWorld/>,
-  document.getElementById("reduce")
-)
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    value: state.value
+  }
+}
+
+const Counter = connect(mapStateToProps)(CounterComponent)
+export default Counter
