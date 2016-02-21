@@ -7,18 +7,21 @@ import Button from 'muicss/lib/react/button';
 import { connect } from "react-redux"
 import { addTodo } from "./../../actions"
 
-const InputFieldView = ({onTodoSubmit}) => (
-  <Form inline={true} onSubmit={onTodoSubmit}>
-    <Input label="What are you gonna do?" floatingLabel={true} />
+const InputFieldView = ({onInputChange}) => (
+  <Form inline={true} onSubmit={(e) => { e.preventDefault() } }>
+    <Input label="What are you gonna do?" onKeyUp={onInputChange} floatingLabel={true} />
     <Button variant="raised">Submit</Button>
   </Form>
 )
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onTodoSubmit: (e) => {
-      e.preventDefault()
-      dispatch(addTodo("test"))
+    onInputChange: (e) => {
+      if (13 === e.keyCode) {
+        dispatch(addTodo(e.target.value))
+        e.target.value = ""
+      }
+      return false
     }
   }
 }

@@ -1,5 +1,6 @@
 import * as actions from "./actions"
-let Immutable = require("immutable")
+const Immutable = require("immutable")
+const ShortId = require('shortid')
 
 function counter(state = 0, action) {
   switch(action.type) {
@@ -20,7 +21,13 @@ function todos(todo_list, action) {
   }
   switch (action.type) {
     case actions.ADD_TODO:
-      return todo_list.unshift(action.payload.label)
+      return todo_list.unshift({id: ShortId.generate(), label: action.payload.label})
+      break
+    case actions.DELETE_TODO:
+      console.log(todo_list)
+      let res = todo_list.filter(todo => todo.id !== action.id)
+      console.log(res)
+      return res
       break
     default:
       return todo_list
