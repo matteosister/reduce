@@ -29,7 +29,6 @@ module.exports = {
   ],
 
   resolve: {
-    //modulesDirectories: [ __dirname + "/web/static/js", __dirname + "/node_modules" ],
     alias: {
       reduce:
         __dirname + "/web/static/js/reduce",

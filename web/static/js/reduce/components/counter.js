@@ -21,7 +21,7 @@ const CounterView = ({value, onIncrementClick, onDecrementClick}) => (
 
 const mapStateToProps = (state) => {
   return {
-    value: state.get('value')
+    value: state.value
   }
 }
 const mapDispatchToProps = (dispatch) => {
