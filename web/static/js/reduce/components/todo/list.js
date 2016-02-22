@@ -8,17 +8,24 @@ import Row from 'muicss/lib/react/row';
 import Col from 'muicss/lib/react/col';
 import { removeTodo } from "./../../actions"
 
-const TodoListView = ({todos, onDeleteTodo}) => (
-  <div>
-    <h2>todo list</h2>
-    {todos.toArray().map((todo) => {
+let generateContent = function(todos, onDeleteTodo) {
+  if (todos.toArray().length > 0) {
+    return todos.toArray().map((todo) => {
       return <Panel key={todo.id}>
         <Row>
           <Col md="11">{todo.label}</Col>
           <Col md="1"><Button color="danger" onClick={(() => { onDeleteTodo(todo.id) })}>&times;</Button></Col>
         </Row>
       </Panel>
-    })}
+    })
+  } else {
+    return <div className="mui--text-display1">Nothing to do!</div>
+  }
+}
+const TodoListView = ({todos, onDeleteTodo}) => (
+  <div>
+    <h2>todo list</h2>
+    {generateContent(todos, onDeleteTodo)}
   </div>
 )
 

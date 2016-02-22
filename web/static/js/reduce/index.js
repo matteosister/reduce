@@ -5,10 +5,12 @@ import { Provider } from 'react-redux'
 import { reduce } from './reducers'
 import { incrementCounter, decrementCounter } from "./actions"
 import Container from 'muicss/lib/react/container'
-import Counter from "./components/counter"
+import Counter from "./components/todo/counter"
 import InputField from "./components/todo/input"
 import TodoList from "./components/todo/list"
-import Divider from 'muicss/lib/react/divider';
+import Divider from 'muicss/lib/react/divider'
+import Row from 'muicss/lib/react/row'
+import Col from 'muicss/lib/react/col'
 import ReactDOM from "react-dom"
 import React from "react"
 
@@ -23,9 +25,10 @@ let unsubscribe = store.subscribe(() =>
 ReactDOM.render(
   <Provider store={store}>
     <Container>
-      <Counter />
-      <Divider />
-      <InputField />
+      <Row>
+        <Col md="6"><InputField /></Col>
+        <Col md="6"><Counter /></Col>
+      </Row>
       <TodoList />
     </Container>
   </Provider>,
